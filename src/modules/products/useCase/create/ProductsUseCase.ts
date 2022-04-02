@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Products } from '../repository/ProductsRepository';
+import { Product } from '../../entities/Product';
 
 interface IRequest {
   description: string;
@@ -8,8 +8,8 @@ interface IRequest {
 }
 
 class ProductsUseCase {
-  async execute({ description, price, quantity }: IRequest): Promise<Products> {
-    const productsRepository = getRepository(Products);
+  async execute({ description, price, quantity }: IRequest): Promise<Product> {
+    const productsRepository = getRepository(Product);
 
     const products = productsRepository.create({
       description,
